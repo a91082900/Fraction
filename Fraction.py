@@ -50,3 +50,6 @@ class Fraction:
     
     def __pow__(self, y): # ** operator
         return Fraction(self.n**y, self.d**y)
+    def __eq__(self, other): # == operator
+        other = self.toFraction(other)
+        return True if self.d == other.d and self.n == other.n else False
