@@ -7,7 +7,7 @@ from Fraction import Fraction
 
 number1 = Fraction(1, 2) # 1/2
 number2 = Fraction(2) # 2
-number3 = Fraction(8, 13) # 8/13-
+number3 = Fraction(8, 13) # 8/13
 
 number4 = Fraction.fromString('7/8') #string init supported
 number5 = Fraction.fromString('8') #string init supported
