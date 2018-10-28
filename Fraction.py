@@ -7,6 +7,11 @@ class Fraction:
                 numerator *= 10
                 denominator *= 10
             numerator = int(numerator)
+        if isinstance(denominator, float):
+            while not denominator.is_integer():
+                numerator *= 10
+                denominator *= 10
+            denominator = int(denominator)
             
         f_gcd = gcd(numerator, denominator)
         if denominator == 0:
@@ -19,6 +24,17 @@ class Fraction:
             denominator = abs(denominator)
         self.n = numerator // f_gcd
         self.d = denominator // f_gcd
+
+    @classmethod
+    def fromString(cls, string_literal):
+        if string_literal == None or string_literal == '':
+                raise ValueError("string literal must not be empty")
+        string_literal = string_literal.split("/")
+        numerator = float(string_literal[0])
+        denominator = 1
+        if len(string_literal) > 1:
+            denominator = float(string_literal[1])
+        return cls(numerator, denominator)
         
     def toFraction(self, obj):
         if isinstance(obj, float) or isinstance(obj, int):
@@ -26,6 +42,8 @@ class Fraction:
         return obj
 
     def __str__(self):
+        if self.d == 1:
+            return str(self.n)
         return "{}/{}".format(self.n, self.d)
     
     def __repr__(self):
